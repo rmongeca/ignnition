@@ -9,6 +9,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      PYTHONPATH: /home/runner/work/ignnition
+
     steps:
     - uses: actions/checkout@v2
 
