@@ -39,6 +39,7 @@ import collections
 import networkx as nx
 from networkx.readwrite import json_graph
 from itertools import chain
+from importlib import util
 
 
 class Ignnition_model:
@@ -137,8 +138,9 @@ class Ignnition_model:
         # add the file with any additional function, if any
         if 'additional_functions_file' in self.CONFIG:
             additional_path = self.__process_path(self.CONFIG['additional_functions_file'])
-            sys.path.insert(1, os.path.join(additional_path, os.pardir))
-            self.module = __import__(os.path.basename(additional_path)[0:-3])
+            spec = util.spec_from_file_location("*", additional_path)
+            self.module = util.module_from_spec(spec)
+            spec.loader.exec_module(self.module)
 
         self.model_info = self.__create_model()
         self.generator = Generator()
