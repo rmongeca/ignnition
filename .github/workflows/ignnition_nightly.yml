@@ -9,9 +9,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-      PYTHONPATH: /home/runner/work/ignnition
-
     steps:
     - uses: actions/checkout@v2
 
@@ -25,18 +22,10 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: test pwd
+    - name: Set PYTHONPATH.
       run: |
-        pwd
-
-    - name: test pythonpath
-      run: |
-        echo $PYTHONPATH
-
-    - name: test ls
-      run: |
-        ls
+        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
     - name: Run example tests with pytest
       run: |
-        pytest
+        pytest tests/
