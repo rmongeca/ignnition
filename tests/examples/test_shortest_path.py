@@ -4,7 +4,7 @@ from tests.utils import working_directory
 
 example_dir = "examples/Shortest_Path"
 
-@pytest.mark.timeout(60*5)  # Timeout after 5 minutes
+@pytest.mark.timeout(60*2)  # Timeout after 2 minutes
 def test_shortest_path():
     """Test Shortest Path example"""
     with working_directory(example_dir):

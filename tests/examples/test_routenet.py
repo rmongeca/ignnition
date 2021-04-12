@@ -4,7 +4,7 @@ from tests.utils import working_directory
 
 example_dir = "examples/Routenet"
 
-@pytest.mark.timeout(60*5)  # Timeout after 5 minutes
+@pytest.mark.timeout(60*2)  # Timeout after 2 minutes
 def test_routenet():
     """Test Routenet example"""
     with working_directory(example_dir):
