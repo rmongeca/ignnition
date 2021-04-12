@@ -24,7 +24,7 @@ jobs:
 
     - name: Set PYTHONPATH.
       run: |
-        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+        echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
     - name: Run example tests with pytest
       run: |
